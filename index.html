@@ -26,16 +26,6 @@
             --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         }
 
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --text-primary: #F2F2F7;
-                --text-secondary: #8E8E93;
-                --background: #000000;
-                --card-background: rgba(28, 28, 30, 0.8);
-                --glass-background: rgba(255, 255, 255, 0.05);
-            }
-        }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--background);
@@ -81,7 +71,7 @@
             margin: 0 auto;
             padding: 1rem 2rem;
             display: flex;
-            justify-content: between;
+            justify-content: space-between;
             align-items: center;
         }
 
@@ -261,7 +251,7 @@
             border-radius: var(--border-radius);
             padding: 2rem;
             box-shadow: 0 10px 30px var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(0,0,0,0.05);
             transition: all 0.3s ease;
             margin-bottom: 2rem;
         }
@@ -315,7 +305,7 @@
             border-radius: var(--border-radius);
             overflow: hidden;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
         .project-card:hover {
@@ -359,6 +349,13 @@
         }
 
         /* Contact Form */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+        
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
@@ -435,7 +432,7 @@
             color: var(--text-primary);
             text-decoration: none;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
         .social-link:hover {
@@ -465,6 +462,20 @@
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(251, 251, 253, 0.95);
+                backdrop-filter: blur(30px);
+                padding: 2rem 0;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
             }
             
             .mobile-menu {
@@ -488,11 +499,14 @@
             .skills-grid {
                 grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Loading Animation */
         .loading {
-            display: none;
+            display: flex;
             position: fixed;
             top: 0;
             left: 0;
@@ -675,940 +689,7 @@
 
                 <div class="card" style="margin-top: 3rem;">
                     <h3>Academic Modules</h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
-                    <div class="card">
-                        <h3>Contact Information</h3>
-                        <div style="margin: 1rem 0;">
-                            <p><i class="fas fa-phone"></i> <strong>Phone:</strong> +94 76 140 7875</p>
-                        </div>
-                        <div style="margin: 1rem 0;">
-                            <p><i class="fas fa-envelope"></i> <strong>Email:</strong> suz.x2006@gmail.com</p>
-                        </div>
-                        <div style="margin: 1rem 0;">
-                            <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> No 79, Dambakanda Estate, Boyagane, Kurunegala</p>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <h3>References</h3>
-                        <div style="margin-bottom: 1.5rem;">
-                            <h4>Mr. Asanka Dinesh</h4>
-                            <p>HOD - Faculty of Information Technology</p>
-                            <p>Master of Computer Science [UCSC]</p>
-                            <p><i class="fas fa-envelope"></i> asankadinesh@horizancampus.edu.lk</p>
-                        </div>
-                        <div>
-                            <h4>Mrs. Chathuri Kulathunga</h4>
-                            <p>Lecturer Grade II, ICBT Campus</p>
-                            <p><i class="fas fa-phone"></i> +94 77 497 9740</p>
-                            <p><i class="fas fa-envelope"></i> chathurik@icbtcampus.edu.lk</p>
-                            <p><i class="fas fa-phone"></i> +94 71 034 8025</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact-form">
-                    <div class="card">
-                        <h3>Send Me a Message</h3>
-                        <form id="contactForm">
-                            <div class="form-group">
-                                <label for="name">Your Name</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Your Email</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="subject">Subject</label>
-                                <input type="text" id="subject" name="subject" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Your Message</label>
-                                <textarea id="message" name="message" rows="5" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary" style="width: 100%;">
-                                <i class="fas fa-paper-plane"></i> Send Message
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <script>
-        // Navigation functionality
-        const navLinks = document.querySelectorAll('.nav-link');
-        const pages = document.querySelectorAll('.page');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const navLinksContainer = document.querySelector('.nav-links');
-
-        // Page navigation
-        function showPage(targetId) {
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-            
-            document.getElementById(targetId).classList.add('active');
-            document.querySelector(`[href="#${targetId}"]`).classList.add('active');
-            
-            // Scroll to top when changing pages
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute('href').substring(1);
-                showPage(targetId);
-            });
-        });
-
-        // Mobile menu toggle
-        mobileMenu.addEventListener('click', () => {
-            navLinksContainer.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            document.body.style.overflow = navLinksContainer.classList.contains('active') ? 'hidden' : 'auto';
-        });
-
-        // Close mobile menu when clicking on a link
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navLinksContainer.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            });
-        });
-
-        // Smooth scrolling for CTA buttons
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                if (document.getElementById(targetId)) {
-                    showPage(targetId);
-                }
-            });
-        });
-
-        // Enhanced contact form with better validation and feedback
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const subject = document.getElementById('subject').value.trim();
-            const message = document.getElementById('message').value.trim();
-            
-            // Validation
-            if (!name || !email || !subject || !message) {
-                showNotification('Please fill in all fields 📝', 'error');
-                return;
-            }
-            
-            if (!isValidEmail(email)) {
-                showNotification('Please enter a valid email address 📧', 'error');
-                return;
-            }
-            
-            // Show sending state
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            submitBtn.disabled = true;
-            
-            // Simulate sending delay
-            setTimeout(() => {
-                // Create enhanced mailto link
-                const mailtoLink = `mailto:suz.x2006@gmail.com?subject=${encodeURIComponent(`Portfolio Contact: ${subject}`)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}\n\n---\nSent from Susara's Portfolio Website\nDate: ${new Date().toLocaleDateString()}`)}`;
-                
-                // Try to open email client
-                window.location.href = mailtoLink;
-                
-                // Reset form and button
-                this.reset();
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-                
-                // Show success message
-                showNotification('Email client opened! Message ready to send 🚀', 'success');
-            }, 1500);
-        });
-        
-        // Email validation helper
-        function isValidEmail(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
-        }
-
-        // Enhanced CV Download functionality with better PDF simulation
-        function downloadCV() {
-            const cvContent = `SUSARA SENARATHNE
-SOFTWARE ENGINEERING STUDENT & DEVELOPER
-
-====================================
-
-CONTACT INFORMATION
-Phone: +94 76 140 7875
-Email: suz.x2006@gmail.com
-Address: No 79, Dambakanda Estate, Boyagane, Kurunegala
-Birthday: April 19, 2006
-Website: https://bit.ly/41PY5nn
-GitHub: https://github.com/susar-aa
-LinkedIn: https://www.linkedin.com/in/susara-senarathne-121ba5312/
-
-====================================
-
-EDUCATION
-
-Higher Diploma in Software Engineering (2023 - 2025)
-ICBT Campus - Kurunegala
-Currently pursuing Master of Computer Science [UCSC]
-
-Diploma in Information and Communication Technology (2021 - 2022)
-ICBT Campus - Kurunegala
-
-General Certificate of Ordinary Level (2020 - 2022)
-Maliyadewa Model School - Kurunegala
-Results: 9 Subjects: 4A's, 2B's, 3C's
-A Grades: Mathematics, ICT, Sinhala, English
-B Grades: Commerce, Buddhism
-C Grades: History, Art, Science
-
-====================================
-
-TECHNICAL SKILLS
-
-Programming Languages:
-• Java - Advanced
-• C++ - Intermediate
-• PHP - Advanced
-• JavaScript - Advanced
-• HTML/CSS - Expert
-
-Mobile Development:
-• Android Development (Java)
-• Firebase Integration
-• API Development & Integration
-• SQL Database Management
-
-Web Development:
-• Full-Stack PHP Development
-• MySQL Database Design
-• Bootstrap Framework
-• Responsive Web Design
-• Payment Gateway Integration (Stripe)
-
-Database Technologies:
-• MySQL
-• SQL
-• Firebase Realtime Database
-
-====================================
-
-PROJECTS PORTFOLIO
-
-1. TRIDOTS MOBILE APP & WEBSITE
-   A comprehensive services providers hiring and machinery renting platform
-   Technologies: Java, Firebase, SQL, PHP, MySQL, HTML, CSS, JavaScript
-   Features: Integrated Stripe payment gateway for secure transactions
-   Link: https://bit.ly/45MefiM
-
-2. LIONS GOLDEN CIRCLE OFFICIAL WEBSITE
-   Fully responsive official website with optimized user experience
-   Technologies: HTML, CSS, JavaScript, PHP
-   Features: Smooth navigation across all devices
-   Link: https://lionsgoldencircle.com
-
-3. FALCON E-COMMERCE PLATFORM
-   Complete e-commerce solution for Falcon Stationery (Pvt) Ltd
-   Technologies: PHP, MySQL, Bootstrap, JavaScript
-   Features: Product catalog, cart, checkout, order tracking
-   Link: https://bit.ly/4oNQeAw
-
-4. CITY CYCLE RENTALS MOBILE APP
-   Android application for bicycle rental service
-   Technologies: Java (Android), PHP, SQL, APIs
-   Features: User authentication, cycle availability, booking system
-   Link: https://bit.ly/3JqjYn3
-
-5. FALCON STATIONERY POS SYSTEM
-   Web-based Point of Sale system for retail management
-   Technologies: HTML, CSS, JavaScript, PHP, MySQL
-   Features: Sales processing, inventory management, billing, reporting
-   Link: https://bit.ly/4fOezSE
-
-6. CARE COMPASS HOSPITAL WEBSITE
-   Hospital management system for academic project
-   Technologies: HTML, CSS, PHP, JavaScript
-   Features: Appointment booking, doctor profiles, patient records
-   Link: https://bit.ly/3HzasgT
-
-====================================
-
-ACADEMIC MODULES COMPLETED
-
-• Web Application Development
-• Mobile Application Development
-• Analytics and Business Intelligence
-• Project Management
-• Service Oriented Computing
-• Data Structures and Algorithms
-• Database Design and Development
-• Computer Networks
-• Advanced Programming (Java, C++)
-• System Analysis and Design
-• Business Information Systems
-
-====================================
-
-SOFT SKILLS
-
-• Fast Learning - Ability to quickly adapt to new technologies
-• Creativity - Innovative problem-solving approach
-• Time Management - Efficient project delivery
-• Teamwork - Collaborative development experience
-• Communication - Clear technical and client communication
-
-====================================
-
-LANGUAGES
-
-• Sinhala - Native Speaker
-• English - Fluent
-
-====================================
-
-PROFESSIONAL REFERENCES
-
-Mr. Asanka Dinesh
-HOD - Faculty of Information Technology
-Master of Computer Science [UCSC]
-Email: asankadinesh@horizancampus.edu.lk
-
-Mrs. Chathuri Kulathunga
-Lecturer Grade II, ICBT Campus
-Phone: +94 77 497 9740
-Email: chathurik@icbtcampus.edu.lk
-Additional Contact: +94 71 034 8025
-
-====================================
-
-PERSONAL STATEMENT
-
-I am a motivated Software Engineering student with a Higher Diploma in 
-Software Engineering and currently working towards my degree. I enjoy 
-learning new skills and using them in real projects. I am committed to 
-growing both personally and professionally, and I'm excited to contribute 
-to team success by creating useful software solutions.
-
-My passion for technology drives me to continuously explore new 
-programming languages, frameworks, and development methodologies. 
-I believe in writing clean, efficient code and creating user-friendly 
-applications that solve real-world problems.
-
-====================================
-
-Generated from Portfolio Website: https://bit.ly/41PY5nn
-Last Updated: August 2025`;
-            
-            // Create enhanced downloadable file
-            const blob = new Blob([cvContent], { type: 'text/plain;charset=utf-8' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'Susara_Senarathne_CV_2025.txt';
-            a.style.display = 'none';
-            document.body.appendChild(a);
-            
-            // Add download animation
-            const downloadBtn = event.target;
-            downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
-            downloadBtn.disabled = true;
-            
-            setTimeout(() => {
-                a.click();
-                window.URL.revokeObjectURL(url);
-                document.body.removeChild(a);
-                
-                // Reset button
-                downloadBtn.innerHTML = '<i class="fas fa-download"></i> Download CV PDF';
-                downloadBtn.disabled = false;
-                
-                // Show success message with better styling
-                showNotification('CV downloaded successfully! 📄', 'success');
-            }, 1000);
-        }
-        
-        // Notification system
-        function showNotification(message, type = 'info') {
-            const notification = document.createElement('div');
-            notification.className = `notification ${type}`;
-            notification.innerHTML = `
-                <div style="
-                    position: fixed;
-                    top: 100px;
-                    right: 20px;
-                    background: ${type === 'success' ? 'linear-gradient(135deg, #34C759, #30B753)' : 'var(--gradient)'};
-                    color: white;
-                    padding: 1rem 1.5rem;
-                    border-radius: 15px;
-                    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-                    backdrop-filter: blur(10px);
-                    z-index: 10000;
-                    font-weight: 600;
-                    transform: translateX(400px);
-                    transition: all 0.3s ease;
-                ">
-                    ${message}
-                </div>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // Animate in
-            setTimeout(() => {
-                notification.firstElementChild.style.transform = 'translateX(0)';
-            }, 100);
-            
-            // Auto remove
-            setTimeout(() => {
-                notification.firstElementChild.style.transform = 'translateX(400px)';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        }
-
-        // Animated elements on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all cards and skill categories
-        document.querySelectorAll('.card, .skill-category, .project-card').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Loading animation
-        window.addEventListener('load', () => {
-            const loading = document.getElementById('loading');
-            loading.style.display = 'none';
-        });
-
-        // Enhanced scroll effects and performance
-        let ticking = false;
-        
-        function updateScrollEffects() {
-            const nav = document.querySelector('nav');
-            const scrolled = window.scrollY;
-            
-            if (scrolled > 100) {
-                nav.style.background = 'rgba(251, 251, 253, 0.95)';
-                nav.style.backdropFilter = 'blur(30px)';
-                nav.style.borderBottom = '1px solid rgba(0, 122, 255, 0.1)';
-            } else {
-                nav.style.background = 'rgba(251, 251, 253, 0.8)';
-                nav.style.backdropFilter = 'blur(20px)';
-                nav.style.borderBottom = '1px solid rgba(0, 0, 0, 0.1)';
-            }
-            
-            // Parallax effect for background
-            const backgroundAnimation = document.querySelector('.background-animation');
-            backgroundAnimation.style.transform = `translateY(${scrolled * 0.5}px)`;
-            
-            ticking = false;
-        }
-        
-        function requestScrollUpdate() {
-            if (!ticking) {
-                requestAnimationFrame(updateScrollEffects);
-                ticking = true;
-            }
-        }
-        
-        window.addEventListener('scroll', requestScrollUpdate);
-
-        // Enhanced typing effect with cursor
-        function typeWriter(element, text, speed = 100) {
-            let i = 0;
-            element.innerHTML = '';
-            element.style.borderRight = '3px solid var(--primary-color)';
-            element.style.animation = 'blink 1s infinite';
-            
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                } else {
-                    // Remove cursor after typing is complete
-                    setTimeout(() => {
-                        element.style.borderRight = 'none';
-                        element.style.animation = 'none';
-                    }, 2000);
-                }
-            }
-            type();
-        }
-        
-        // Add cursor blink animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes blink {
-                0%, 50% { border-color: var(--primary-color); }
-                51%, 100% { border-color: transparent; }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Initialize typing effect when page loads
-        window.addEventListener('load', () => {
-            const heroTitle = document.querySelector('.hero-title');
-            const originalText = heroTitle.textContent;
-            setTimeout(() => {
-                typeWriter(heroTitle, originalText, 100);
-            }, 500);
-        });
-
-        // Advanced particle system with better performance
-        class ParticleSystem {
-            constructor() {
-                this.particles = [];
-                this.maxParticles = window.innerWidth < 768 ? 15 : 30;
-                this.init();
-            }
-            
-            init() {
-                this.createParticles();
-                this.animate();
-            }
-            
-            createParticles() {
-                for (let i = 0; i < this.maxParticles; i++) {
-                    setTimeout(() => this.addParticle(), i * 200);
-                }
-            }
-            
-            addParticle() {
-                if (this.particles.length >= this.maxParticles) return;
-                
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.cssText = `
-                    position: fixed;
-                    width: ${Math.random() * 4 + 2}px;
-                    height: ${Math.random() * 4 + 2}px;
-                    background: rgba(0, 122, 255, ${Math.random() * 0.5 + 0.1});
-                    border-radius: 50%;
-                    pointer-events: none;
-                    z-index: 0;
-                    left: ${Math.random() * window.innerWidth}px;
-                    top: ${window.innerHeight + 10}px;
-                `;
-                
-                document.body.appendChild(particle);
-                this.particles.push(particle);
-                
-                this.animateParticle(particle);
-            }
-            
-            animateParticle(particle) {
-                const duration = Math.random() * 4000 + 3000;
-                const startTime = performance.now();
-                const startY = parseFloat(particle.style.top);
-                const endY = -100;
-                const drift = (Math.random() - 0.5) * 100;
-                const startX = parseFloat(particle.style.left);
-                
-                const animate = (currentTime) => {
-                    const elapsed = currentTime - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-                    
-                    const easeOut = 1 - Math.pow(1 - progress, 3);
-                    const y = startY + (endY - startY) * easeOut;
-                    const x = startX + drift * progress;
-                    const opacity = Math.sin(progress * Math.PI);
-                    
-                    particle.style.top = y + 'px';
-                    particle.style.left = x + 'px';
-                    particle.style.opacity = opacity;
-                    particle.style.transform = `rotate(${progress * 360}deg)`;
-                    
-                    if (progress < 1) {
-                        requestAnimationFrame(animate);
-                    } else {
-                        this.removeParticle(particle);
-                    }
-                };
-                
-                requestAnimationFrame(animate);
-            }
-            
-            removeParticle(particle) {
-                const index = this.particles.indexOf(particle);
-                if (index > -1) {
-                    this.particles.splice(index, 1);
-                    document.body.removeChild(particle);
-                    
-                    // Add new particle to maintain count
-                    setTimeout(() => this.addParticle(), Math.random() * 1000);
-                }
-            }
-        }
-        
-        // Initialize particle system
-        let particleSystem;
-        setTimeout(() => {
-            particleSystem = new ParticleSystem();
-        }, 2000);Height + 100}px) rotate(360deg)`, opacity: 0 }
-            ], {
-                duration: Math.random() * 3000 + 2000,
-                easing: 'linear'
-            });
-            
-            animation.onfinish = () => particle.remove();
-        }
-
-        // Create particles periodically
-        setInterval(createParticle, 300);
-
-        // Add interactive hover effects
-        document.querySelectorAll('.btn, .card, .project-card, .skill-category').forEach(element => {
-            element.addEventListener('mouseenter', function() {
-                this.style.transform = this.style.transform.replace('scale(1)', '') + ' scale(1.02)';
-            });
-            
-            element.addEventListener('mouseleave', function() {
-                this.style.transform = this.style.transform.replace(' scale(1.02)', '');
-            });
-        });
-
-        // Mobile responsive adjustments
-        function handleResize() {
-            if (window.innerWidth <= 768) {
-                document.querySelectorAll('.projects-grid, .skills-grid').forEach(grid => {
-                    grid.style.gridTemplateColumns = '1fr';
-                });
-            } else {
-                document.querySelector('.projects-grid').style.gridTemplateColumns = 'repeat(auto-fit, minmax(350px, 1fr))';
-                document.querySelector('.skills-grid').style.gridTemplateColumns = 'repeat(auto-fit, minmax(250px, 1fr))';
-            }
-        }
-
-        window.addEventListener('resize', handleResize);
-        handleResize(); // Initial call
-
-        // Dark mode toggle (optional enhancement)
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-        }
-
-        // Add keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-                const currentActive = document.querySelector('.nav-link.active');
-                const allLinks = Array.from(navLinks);
-                const currentIndex = allLinks.indexOf(currentActive);
-                const nextIndex = (currentIndex + 1) % allLinks.length;
-                allLinks[nextIndex].click();
-            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-                const currentActive = document.querySelector('.nav-link.active');
-                const allLinks = Array.from(navLinks);
-                const currentIndex = allLinks.indexOf(currentActive);
-                const prevIndex = currentIndex > 0 ? currentIndex - 1 : allLinks.length - 1;
-                allLinks[prevIndex].click();
-            }
-        });
-
-        // Performance optimization - lazy loading for images
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src;
-                        img.classList.remove('lazy');
-                        imageObserver.unobserve(img);
-                    }
-                });
-            });
-
-            document.querySelectorAll('img[data-src]').forEach(img => {
-                imageObserver.observe(img);
-            });
-        }
-    </script>
-
-    <style>
-        /* Additional mobile responsive styles */
-        @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background: var(--card-background);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 3rem;
-                font-size: 1.2rem;
-                transition: left 0.3s ease;
-                z-index: 999;
-            }
-
-            .nav-links.active {
-                left: 0;
-            }
-
-            .mobile-menu.active span:nth-child(1) {
-                transform: rotate(-45deg) translate(-5px, 6px);
-            }
-            
-            .mobile-menu.active span:nth-child(2) {
-                opacity: 0;
-            }
-            
-            .mobile-menu.active span:nth-child(3) {
-                transform: rotate(45deg) translate(-5px, -6px);
-            }
-
-            .container {
-                padding: 0 1rem;
-            }
-
-            .hero {
-                padding: 1rem 0;
-                min-height: 70vh;
-            }
-
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-
-            .btn {
-                padding: 1rem 1.5rem;
-                width: 200px;
-                text-align: center;
-            }
-
-            .social-links {
-                gap: 0.5rem;
-            }
-
-            .social-link {
-                width: 40px;
-                height: 40px;
-            }
-
-            .page-title {
-                font-size: 2rem;
-            }
-
-            .card {
-                padding: 1.5rem;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .skills-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 1.5rem;
-            }
-
-            .skill-category {
-                padding: 1.5rem;
-            }
-
-            .project-links {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .project-link {
-                text-align: center;
-                justify-content: center;
-            }
-
-            .form-group input,
-            .form-group textarea {
-                padding: 0.8rem;
-                font-size: 16px; /* Prevents zoom on iOS */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-            
-            .hero-description {
-                font-size: 1rem;
-            }
-            
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .card {
-                padding: 1rem;
-                margin-bottom: 1rem;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 250px;
-            }
-        }
-
-        // Enhanced animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .skill-category:hover {
-            animation: float 2s ease-in-out infinite;
-        }
-
-        .btn:hover {
-            animation: pulse 0.6s ease-in-out;
-        }
-
-        .card:nth-child(odd) {
-            animation: slideInLeft 0.8s ease-out forwards;
-        }
-
-        .card:nth-child(even) {
-            animation: slideInRight 0.8s ease-out forwards;
-        }
-
-        /* Glassmorphism enhancements */
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-            border-radius: var(--border-radius);
-            pointer-events: none;
-        }
-
-        .card {
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Improved hover effects */
-        .project-card:hover .project-header {
-            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
-        }
-
-        /* Loading screen improvements */
-        .loading {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        }
-
-        .loading .loader {
-            border-color: rgba(255,255,255,0.3);
-            border-top-color: white;
-        }
-
-        /* Accessibility improvements */
-        .btn:focus,
-        .nav-link:focus,
-        input:focus,
-        textarea:focus {
-            outline: 2px solid var(--primary-color);
-            outline-offset: 2px;
-        }
-
-        /* Print styles */
-        @media print {
-            .nav,
-            .cta-buttons,
-            .social-links,
-            .background-animation {
-                display: none;
-            }
-            
-            .page {
-                display: block !important;
-                break-inside: avoid;
-            }
-            
-            body {
-                background: white;
-                color: black;
-            }
-        }
-    </style>
-</body>
-</html>(300px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-top: 1rem;">
                         <div>
                             <ul style="list-style: none; padding: 0;">
                                 <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,122,255,0.1);">• Web Application Development</li>
@@ -1745,5 +826,190 @@ Last Updated: August 2025`;
         <section id="contact" class="page">
             <div class="container">
                 <h2 class="page-title">Get In Touch</h2>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax
+                <div class="contact-grid">
+                    <div class="card">
+                        <h3>Contact Information</h3>
+                        <div style="margin: 1rem 0;">
+                            <p><i class="fas fa-phone"></i> <strong>Phone:</strong> +94 76 140 7875</p>
+                        </div>
+                        <div style="margin: 1rem 0;">
+                            <p><i class="fas fa-envelope"></i> <strong>Email:</strong> suz.x2006@gmail.com</p>
+                        </div>
+                        <div style="margin: 1rem 0;">
+                            <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> No 79, Dambakanda Estate, Boyagane, Kurunegala</p>
+                        </div>
+                         <h3>References</h3>
+                        <div style="margin-bottom: 1.5rem;">
+                            <h4>Mr. Asanka Dinesh</h4>
+                            <p>HOD - Faculty of Information Technology</p>
+                            <p>Master of Computer Science [UCSC]</p>
+                            <p><i class="fas fa-envelope"></i> asankadinesh@horizancampus.edu.lk</p>
+                        </div>
+                        <div>
+                            <h4>Mrs. Chathuri Kulathunga</h4>
+                            <p>Lecturer Grade II, ICBT Campus</p>
+                            <p><i class="fas fa-phone"></i> +94 77 497 9740</p>
+                            <p><i class="fas fa-envelope"></i> chathurik@icbtcampus.edu.lk</p>
+                            <p><i class="fas fa-phone"></i> +94 71 034 8025</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Send Me a Message</h3>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Your Message</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Navigation functionality
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinksContainer = document.querySelector('.nav-links');
+
+        // Page navigation
+        function showPage(targetId) {
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            const targetPage = document.getElementById(targetId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+            
+            const targetLink = document.querySelector(`[href="#${targetId}"]`);
+            if (targetLink) {
+                targetLink.classList.add('active');
+            }
+            
+            // Close mobile menu after navigation
+            if (navLinksContainer.classList.contains('active')) {
+                navLinksContainer.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                showPage(targetId);
+            });
+        });
+
+        // Mobile menu toggle
+        mobileMenu.addEventListener('click', () => {
+            navLinksContainer.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Smooth scrolling for CTA buttons and other internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                if (document.getElementById(targetId)) {
+                    showPage(targetId);
+                }
+            });
+        });
+
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            const mailtoLink = `mailto:suz.x2006@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+            
+            window.location.href = mailtoLink;
+        });
+
+        // CV Download functionality
+        function downloadCV() {
+            // In a real application, you would link to your actual PDF file.
+            // For this example, we'll just show an alert.
+            // Replace '#' with the actual path to your CV PDF file.
+            // For example: const cvUrl = './assets/Susara_Senarathne_CV.pdf';
+            const cvUrl = '#'; 
+            if (cvUrl === '#') {
+                alert('Please replace the placeholder link with the actual path to your CV PDF file in the script.');
+                return;
+            }
+            const a = document.createElement('a');
+            a.href = cvUrl;
+            a.download = 'Susara_Senarathne_CV.pdf';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        // Animated elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card, .skill-category, .project-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Loading animation
+        window.addEventListener('load', () => {
+            const loading = document.getElementById('loading');
+            loading.style.display = 'none';
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(251, 251, 253, 0.95)';
+                nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+            } else {
+                nav.style.background = 'rgba(251, 251, 253, 0.8)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
