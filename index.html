@@ -1,99 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f9f9f9;
-      color: #333;
-    }
-    header {
-      background: #333;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2em;
-    }
-    nav a {
-      color: #fff;
-      margin: 0 10px;
-      text-decoration: none;
-    }
-    section {
-      padding: 40px;
-      max-width: 800px;
-      margin: auto;
-    }
-    h2 {
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 5px;
-    }
-    .project {
-      background: #fff;
-      padding: 15px;
-      margin: 15px 0;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    footer {
-      text-align: center;
-      padding: 15px;
-      background: #333;
-      color: #fff;
-      margin-top: 30px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Susara Senarathne | Software Engineering Student</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header>
-    <h1>Hi, I'm [Your Name]</h1>
-    <p>Web Developer | Designer | Tech Enthusiast</p>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+    <header class="header">
+        <nav class="container navbar">
+            <a href="index.html" class="logo">Susara Senarathne</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="mailto:suz.x2006@gmail.com" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      Welcome to my portfolio! I’m a passionate developer who loves building
-      clean and user-friendly websites. This is a simple portfolio template
-      hosted on GitHub Pages.
-    </p>
-  </section>
+    <main>
+        <section class="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <img src="assets/profile-photo.jpg" alt="Susara Senarathne" class="hero-photo-mobile">
+                    <h1>Susara Senarathne</h1>
+                    <p class="subtitle">Software Engineering Student</p>
+                    <p class="description">
+                        [cite_start]A motivated student with a Higher Diploma in Software Engineering, passionate about learning new technologies and building practical software solutions. [cite: 3, 4, 5]
+                    </p>
+                    <a href="assets/Susara Senarathne.pdf" download class="btn">Download CV</a>
+                </div>
+                <div class="hero-image">
+                    <img src="assets/profile-photo.jpg" alt="Susara Senarathne" class="hero-photo-desktop">
+                </div>
+            </div>
+        </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project">
-      <h3>Project 1</h3>
-      <p>A short description of your project goes here.</p>
-    </div>
-    <div class="project">
-      <h3>Project 2</h3>
-      <p>Another cool project description goes here.</p>
-    </div>
-  </section>
+        <section class="about container">
+            <h2 class="section-title">About Me</h2>
+            [cite_start]<p>I am currently pursuing my degree while holding a Higher Diploma in Software Engineering. [cite: 3, 7] [cite_start]My goal is to contribute to team success by developing high-quality software. [cite: 5] [cite_start]I am a fast learner, creative, and possess strong skills in teamwork and communication. [cite: 27]</p>
+        </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
-    <p>GitHub: <a href="https://github.com/your-username" target="_blank">github.com/your-username</a></p>
-  </section>
+        <section class="education container">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        [cite_start]<h3>Higher Diploma in Software Engineering [cite: 7]</h3>
+                        [cite_start]<p>ICBT Campus - Kurunegala [cite: 7]</p>
+                        [cite_start]<span class="date">2023-2025 [cite: 9]</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        [cite_start]<h3>Diploma in ICT [cite: 8]</h3>
+                        [cite_start]<p>ICBT Campus - Kurunegala [cite: 32]</p>
+                        [cite_start]<span class="date">2021-2022 [cite: 31]</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>G.C.E. [cite_start]Ordinary Level [cite: 33]</h3>
+                        [cite_start]<p>Maliyadewa Model School - Kurunegala [cite: 34]</p>
+                        [cite_start]<span class="date">2020-2022 [cite: 35]</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <footer>
-    <p>© 2025 [Your Name]. All rights reserved.</p>
-  </footer>
+        <section class="contact container">
+            <h2 class="section-title">Get in Touch</h2>
+            <p>I'm open to new opportunities and collaborations.</p>
+            <div class="contact-links">
+                [cite_start]<a href="mailto:suz.x2006@gmail.com" class="contact-link">suz.x2006@gmail.com [cite: 13]</a>
+                [cite_start]<a href="https://www.linkedin.com/in/susara-senarathne-121ba5312/" target="_blank" class="contact-link">LinkedIn [cite: 24, 25]</a>
+                [cite_start]<a href="https://github.com/susar-aa" target="_blank" class="contact-link">GitHub [cite: 22]</a>
+            </div>
+        </section>
+    </main>
 
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Susara Senarathne. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
