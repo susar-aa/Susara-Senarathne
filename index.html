@@ -941,23 +941,20 @@
         });
 
         // CV Download functionality
-        function downloadCV() {
-            // In a real application, you would link to your actual PDF file.
-            // For this example, we'll just show an alert.
-            // Replace '#' with the actual path to your CV PDF file.
-            // For example: const cvUrl = './assets/Susara_Senarathne_CV.pdf';
-            const cvUrl = '#'; 
-            if (cvUrl === '#') {
-                alert('Please replace the placeholder link with the actual path to your CV PDF file in the script.');
-                return;
-            }
-            const a = document.createElement('a');
-            a.href = cvUrl;
-            a.download = 'Susara_Senarathne_CV.pdf';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        }
+        // CV Download functionality
+function downloadCV() {
+    // The path to your CV file. 
+    // Make sure this path is correct based on your folder structure.
+    const cvUrl = './assets/Susara_Senarathne_CV.pdf'; 
+
+    // This creates a temporary link element to trigger the download.
+    const a = document.createElement('a');
+    a.href = cvUrl;
+    a.download = 'Susara_Senarathne_CV.pdf'; // This is the name the file will have when downloaded.
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
 
         // Animated elements on scroll
         const observerOptions = {
@@ -998,4 +995,5 @@
     </script>
 </body>
 </html>
+
 
