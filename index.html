@@ -947,10 +947,12 @@
                             </div>
                         </div>
                         
-                        <button onclick="downloadCV()" class="btn btn-primary" style="width: 100%; margin-top: 2rem;">
+                        <!-- UPDATED CV Download Link -->
+                        <a href="assets/Susara_Senarathne_CV.pdf" download="Susara_Senarathne_CV.pdf" class="btn btn-primary" style="width: 100%; margin-top: 2rem; justify-content: center;">
                             <i class="fas fa-download"></i>
                             Download Resume
-                        </button>
+                        </a>
+                        <!-- END UPDATED CV Link -->
                     </div>
                 </div>
 
@@ -1094,7 +1096,7 @@
                 </div>
             </div>
 
-                <!-- Projects Section -->
+            <!-- Projects Section -->
     <section id="projects" class="page-section">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
@@ -1232,7 +1234,7 @@
                                 <span class="tech-tag">JavaScript</span>
                                 <span class="tech-tag">PHP</span>
                                 <span class="tech-tag">MySQL</span>
-                                <span class="tech-tag">AI Integration</span>
+                                <span class="skill-tag">AI Integration</span>
                             </div>
                         </div>
                         <div class="project-links">
@@ -1421,7 +1423,7 @@
             icon.className = navLinksContainer.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
         });
 
-        // Contact form
+        // Contact form (Mailto implementation)
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -1447,70 +1449,8 @@
             }, 3000);
         });
 
-        // CV Download
-        function downloadCV() {
-            const cvContent = `
-SUSARA SENARATHNE
-Software Engineering Student & Developer
-═══════════════════════════════════════
-
-📧 Email: suz.x2006@gmail.com
-📱 Phone: +94 76 140 7875
-📍 Location: Kurunegala, Sri Lanka
-🌐 Portfolio: https://bit.ly/41PY5nn
-
-EDUCATION
-═════════
-🎓 Higher Diploma in Software Engineering (2023-2025)
-   ICBT Campus - Kurunegala
-   Currently pursuing Master of Computer Science [UCSC]
-
-🎓 Diploma in ICT (2021-2022)
-   ICBT Campus - Kurunegala
-
-🎓 O/L Certificate (2020-2022)
-   Maliyadewa Model School - Kurunegala
-   Results: 9 Subjects - 4A's, 2B's, 3C's
-
-TECHNICAL SKILLS
-═══════════════
-💻 Programming: Java, C++, PHP, JavaScript, Python
-🌐 Web Development: HTML5, CSS3, Bootstrap, Responsive Design
-📱 Mobile Development: Android (Java), Firebase, REST APIs
-🗄️ Database: MySQL, SQL, Firebase
-🔧 Tools: Git, GitHub, VS Code, Android Studio
-
-KEY PROJECTS
-═══════════
-🚀 Tridots Platform - Service hiring & machinery rental platform
-🦁 Lions Golden Circle - Corporate website with modern design
-🛒 Falcon E-Commerce - Complete online shopping solution
-🚲 City Cycle Rentals - Android bicycle rental application
-🎭 Talent Up Sri Lanka - Interactive talent showcase platform
-💰 Falcon POS System - Web-based point of sale system
-
-CORE STRENGTHS
-═════════════
-⚡ Problem Solving & Innovation
-🤝 Team Collaboration & Leadership
-📚 Quick Learning & Adaptability
-🎯 Project Management & Delivery
-
-═══════════════════════════════════════
-Ready to build the future together!
-            `;
-            
-            const blob = new Blob([cvContent], { type: 'text/plain; charset=utf-8' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'Susara_Senarathne_Resume_2025.txt';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
-        }
-
+        // NOTE: The original `downloadCV` function was removed, as the download button now uses a direct `href` link.
+        
         // Smooth animations on scroll
         const observerOptions = {
             threshold: 0.1,
@@ -1574,5 +1514,3 @@ Ready to build the future together!
     </script>
 </body>
 </html>
-
-
