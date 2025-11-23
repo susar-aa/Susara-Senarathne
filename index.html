@@ -140,20 +140,9 @@
         .hero-content {
             max-width: 1200px;
             animation: fadeInUp 1s ease-out;
-        }
-
-        .hero-badge {
-            display: inline-flex;
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
-            background: rgba(0, 255, 136, 0.1);
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            border-radius: 50px;
-            padding: 0.7rem 1.5rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--primary-green);
-            margin-bottom: 2rem;
         }
 
         .hero-title {
@@ -237,6 +226,7 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
             max-width: 800px;
+            width: 100%;
             margin: 0 auto;
         }
 
@@ -415,7 +405,6 @@
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
         }
 
-        /* Added Project Image Styles */
         .project-image {
             width: 100%;
             height: 200px;
@@ -436,7 +425,7 @@
 
         .project-header {
             background: linear-gradient(135deg, var(--primary-green), var(--accent-blue));
-            padding: 1.5rem 2rem; /* Reduced padding slightly since image is above */
+            padding: 1.5rem 2rem;
             position: relative;
         }
 
@@ -696,12 +685,13 @@
             display: flex;
             justify-content: center;
             gap: 1rem;
-            margin: 3rem 0;
+            /* Margin adjusted to sit below text */
+            margin: 1.5rem 0 2rem; 
         }
 
         .social-link {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             background: rgba(26, 26, 46, 0.6);
             border: 1px solid var(--border);
             border-radius: 50%;
@@ -785,7 +775,6 @@
                 position: static;
             }
 
-            /* Adjust nav for tablet/smaller desktops */
             .nav-container {
                 /* gap: 2rem; Removed to keep space-between working */
             }
@@ -812,13 +801,14 @@
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: rgba(26, 26, 46, 0.95);
+                background: rgba(26, 26, 46, 0.98); /* Improved background opacity */
                 border: 1px solid var(--border);
                 border-radius: 20px;
                 padding: 1rem;
                 margin-top: 0.5rem;
                 gap: 0.5rem;
                 backdrop-filter: blur(20px);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             }
 
             .mobile-toggle {
@@ -835,8 +825,15 @@
             }
 
             .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr); /* Adjusted for 3 items */
                 gap: 1rem;
+            }
+            
+            /* If screen is very small, stack stats */
+            @media (max-width: 480px) {
+                 .stats-grid {
+                    grid-template-columns: 1fr;
+                }
             }
 
             .skills-grid,
@@ -877,15 +874,31 @@
     <section id="home" class="page-section active">
         <div class="hero">
             <div class="hero-content">
-                <div class="hero-badge">
-                    <i class="fas fa-circle" style="color: var(--primary-green); font-size: 0.5rem;"></i>
-                    Available for opportunities
-                </div>
                 
                 <h1 class="hero-title">SuzxLabs is where<br>dreamers become<br>builders</h1>
                 
-                <div style="font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin: 2rem 0; background: linear-gradient(135deg, var(--primary-green), var(--accent-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                <div style="font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin-top: 2rem; background: linear-gradient(135deg, var(--primary-green), var(--accent-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
                     Susara Senarathne
+                </div>
+
+                <!-- Social Media Grid Moved Here -->
+                <div class="social-grid">
+                    <a href="https://github.com/susar-aa" target="_blank" class="social-link" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/susara-senarathne-121ba5312/" target="_blank" class="social-link" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://www.instagram.com/susar.aa/" target="_blank" class="social-link" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <!-- WhatsApp Added -->
+                    <a href="https://wa.me/94761407875" target="_blank" class="social-link" title="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="mailto:suz.x2006@gmail.com" class="social-link" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
                 </div>
                 
                 <p class="hero-subtitle">Software Engineer & Creative Developer</p>
@@ -899,10 +912,6 @@
                     <a href="#projects" class="btn btn-primary">
                         <i class="fas fa-rocket"></i>
                         Explore My Work
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <i class="fas fa-paper-plane"></i>
-                        Let's Connect
                     </a>
                 </div>
                 
@@ -919,25 +928,7 @@
                         <span class="stat-number">8+</span>
                         <span class="stat-label">Technologies</span>
                     </div>
-                    <div class="stat-card">
-                        <span class="stat-number">∞</span>
-                        <span class="stat-label">Possibilities</span>
-                    </div>
-                </div>
-
-                <div class="social-grid">
-                    <a href="https://github.com/susar-aa" target="_blank" class="social-link">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/susara-senarathne-121ba5312/" target="_blank" class="social-link">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://www.instagram.com/susar.aa/" target="_blank" class="social-link">
-                        <i class="fas fa-instagram"></i>
-                    </a>
-                    <a href="mailto:suz.x2006@gmail.com" class="social-link">
-                        <i class="fas fa-envelope"></i>
-                    </a>
+                    <!-- Possibilities card removed -->
                 </div>
             </div>
         </div>
@@ -973,12 +964,10 @@
                             </div>
                         </div>
                         
-                        <!-- UPDATED CV Download Link -->
-                        <a href="#" onclick="alert('This is a demo link. In a real environment, this would download the CV PDF.'); return false;" class="btn btn-primary" style="width: 100%; margin-top: 2rem; justify-content: center;">
+                        <a href="assets/Susara_Senarathne_CV.pdf" download="Susara_Senarathne_CV.pdf" class="btn btn-primary" style="width: 100%; margin-top: 2rem; justify-content: center;">
                             <i class="fas fa-download"></i>
                             Download Resume
                         </a>
-                        <!-- END UPDATED CV Link -->
                     </div>
                 </div>
 
@@ -988,6 +977,16 @@
                             <i class="fas fa-graduation-cap"></i> Education Journey
                         </h3>
                         <div class="timeline">
+                            <!-- New Education Entry Added -->
+                            <div class="timeline-item">
+                                <div class="timeline-date">2025 - 2026</div>
+                                <div class="timeline-title">BSc (Hons) Computing & Software Engineering</div>
+                                <div class="timeline-location">Undergraduate</div>
+                                <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                                    Specializing in advanced software engineering principles and computing systems.
+                                </p>
+                            </div>
+
                             <div class="timeline-item">
                                 <div class="timeline-date">2023 - 2025</div>
                                 <div class="timeline-title">Higher Diploma in Software Engineering</div>
@@ -1133,7 +1132,7 @@
                 <!-- Care Compass Hospital -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="images/carecompass.png" alt="Care Compass">
+                        <img src="images/carecompass.png" alt="Care Compass" onerror="this.src='https://placehold.co/600x400/16213e/00ff88?text=Care+Compass'">
                     </div>
                     <div class="project-header">
                         <div class="project-title">Care Compass Hospital System</div>
@@ -1164,7 +1163,7 @@
                 <!-- DMA Electricals -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="images/dma.png" alt="DMA Electricals">
+                        <img src="images/dma.png" alt="DMA Electricals" onerror="this.src='https://placehold.co/600x400/16213e/00ff88?text=DMA+Electricals'">
                     </div>
                     <div class="project-header">
                         <div class="project-title">DMA Electricals System</div>
@@ -1225,7 +1224,7 @@
                 <!-- Tridots -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="images/tridots.png" alt="Tridots">
+                        <img src="images/tridots.png" alt="Tridots" onerror="this.src='https://placehold.co/600x400/16213e/00ff88?text=Tridots'">
                     </div>
                     <div class="project-header">
                         <div class="project-title">Tridots Platform</div>
@@ -1257,7 +1256,7 @@
                 <!-- Lions Golden Circle -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="images/lions.png" alt="Lions Golden Circle">
+                        <img src="images/lions.png" alt="Lions Golden Circle" onerror="this.src='https://placehold.co/600x400/16213e/00ff88?text=Lions+Golden+Circle'">
                     </div>
                     <div class="project-header">
                         <div class="project-title">Lions Golden Circle</div>
@@ -1288,7 +1287,7 @@
                 <!-- Falcon E-Commerce -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="images/falcon.png" alt="Falcon Stationery">
+                        <img src="images/falcon.png" alt="Falcon Stationery" onerror="this.src='https://placehold.co/600x400/16213e/00ff88?text=Falcon+Stationery'">
                     </div>
                     <div class="project-header">
                         <div class="project-title">Falcon E-Commerce</div>
@@ -1322,7 +1321,7 @@
                 <!-- City Cycle Rentals -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="images/citycycle.png" alt="City Cycle">
+                        <img src="images/citycycle.png" alt="City Cycle" onerror="this.src='https://placehold.co/600x400/16213e/00ff88?text=City+Cycle'">
                     </div>
                     <div class="project-header">
                         <div class="project-title">City Cycle Rentals</div>
@@ -1353,7 +1352,7 @@
                 <!-- Talent Up -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="images/talentup.png" alt="Talent Up">
+                        <img src="images/talentup.png" alt="Talent Up" onerror="this.src='https://placehold.co/600x400/16213e/00ff88?text=Talent+Up'">
                     </div>
                     <div class="project-header">
                         <div class="project-title">Talent Up Sri Lanka</div>
@@ -1416,7 +1415,7 @@
                 <!-- Falcon POS -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="images/falconpos.png" alt="Falcon POS">
+                        <img src="images/falconpos.png" alt="Falcon POS" onerror="this.src='https://placehold.co/600x400/16213e/00ff88?text=Falcon+POS'">
                     </div>
                     <div class="project-header">
                         <div class="project-title">Falcon POS System</div>
@@ -1499,17 +1498,6 @@
                         </div>
                     </div>
 
-                    <div class="social-grid" style="justify-content: flex-start; margin-top: 2rem;">
-                        <a href="https://github.com/susar-aa" target="_blank" class="social-link">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/susara-senarathne-121ba5312/" target="_blank" class="social-link">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://bit.ly/41PY5nn" target="_blank" class="social-link">
-                            <i class="fas fa-globe"></i>
-                        </a>
-                    </div>
                 </div>
 
                 <div class="contact-form">
@@ -1559,6 +1547,12 @@
                     }, 500);
                 }, 1000);
             }
+            
+            // Handle hash navigation on page load (SPA logic fix)
+            const hash = window.location.hash.substring(1);
+            if(hash) {
+                showSection(hash);
+            }
         });
 
         // Navigation & SPA Logic
@@ -1572,10 +1566,11 @@
             navLinks.forEach(link => link.classList.remove('active'));
             
             const targetSection = document.getElementById(targetId);
-            const targetLink = document.querySelector(`[href="#${targetId}"]`);
+            // Find the main nav link corresponding to this section to highlight it
+            const targetNavLink = document.querySelector(`.nav-link[href="#${targetId}"]`);
             
             if (targetSection) targetSection.classList.add('active');
-            if (targetLink) targetLink.classList.add('active');
+            if (targetNavLink) targetNavLink.classList.add('active');
             
             // Close mobile menu
             if(navLinksContainer) {
@@ -1587,13 +1582,21 @@
             }
         }
 
-        navLinks.forEach(link => {
+        // Add click event to ALL internal links (Nav links + CTA buttons)
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
             link.addEventListener('click', (e) => {
-                e.preventDefault();
                 const href = link.getAttribute('href');
+                // Ignore empty hash links (like the download resume placeholder)
+                if(href === '#') return;
+
+                e.preventDefault();
                 if(href && href.startsWith('#')) {
                     const targetId = href.substring(1);
-                    showSection(targetId);
+                    // Only navigate if the section exists
+                    if(document.getElementById(targetId)) {
+                        showSection(targetId);
+                        window.location.hash = targetId;
+                    }
                 }
             });
         });
@@ -1674,30 +1677,38 @@
             });
         });
 
-        // Typing effect for hero title
-        function typeWriter(element, text, speed = 80) {
-            let i = 0;
+        // Improved Typing effect for hero title
+        const textToType = ["SuzxLabs is where", "dreamers become", "builders"];
+        const heroTitle = document.querySelector('.hero-title');
+
+        function typeLines(element, lines, speed = 80) {
             element.innerHTML = '';
-            
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
+            let lineIndex = 0;
+            let charIndex = 0;
+
+            function typeChar() {
+                if (lineIndex < lines.length) {
+                    if (charIndex < lines[lineIndex].length) {
+                        if (charIndex === 0 && lineIndex > 0) {
+                            element.innerHTML += '<br>';
+                        }
+                        element.innerHTML += lines[lineIndex].charAt(charIndex);
+                        charIndex++;
+                        setTimeout(typeChar, speed);
+                    } else {
+                        lineIndex++;
+                        charIndex = 0;
+                        setTimeout(typeChar, speed);
+                    }
                 }
             }
-            
-            type();
+            typeChar();
         }
 
         // Initialize typing effect
         setTimeout(() => {
-            const heroTitle = document.querySelector('.hero-title');
             if (heroTitle) {
-                const originalText = heroTitle.textContent.trim().replace(/\s+/g, ' '); 
-                // Simple re-write for effect
-                heroTitle.innerHTML = '';
-                typeWriter(heroTitle, "SuzxLabs is where<br>dreamers become<br>builders", 60);
+                typeLines(heroTitle, textToType, 60);
             }
         }, 1500);
     </script>
